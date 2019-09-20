@@ -1,0 +1,84 @@
+FORMAT: 1A
+HOST: http://129.213.110.254:8011/jph/v/
+
+# jph_api_demo/v1
+
+Example ordering api
+
+## Orders Collection [/orders]
+
+### List All Orders [GET]
+
++ Response 200 (application/json)
+
+
+        {
+            "orders": [
+                {
+                    "orderNumber": 123456,
+                    "customer": 123,
+                    "lines": [
+                        {
+                            "itemNumber": 8654,
+                            "quantity": 456
+                        }
+                    ]
+                }
+            ]
+        }
+
+
+### Create a New Order [POST]
+
++ Request (application/json)
+
+        {
+            "orderNumber": 123456,
+            "customer": 654,
+            "lines": [
+                {
+                    "itemNumber": 987,
+                    "quantity": 4
+                }
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /orders/123456
+
+    + Body
+
+            {
+                "orderNumber": 123456,
+                "customer": 654,
+                "lines": [
+                    {
+                        "itemNumber": 987,
+                        "quantity": 4
+                    }
+                ]
+            }
+
+## Orders [/orders/{order_id}]
+
+
++ Parameter
+    + order_id (number) - ID of the order as an integer
+    
+### View the order detail [GET]
+
++ Response 200 (application/json)
+            
+        {
+            "orderNumber": 123456,
+            "customer": 654,
+            "lines": [
+                {
+                    "itemNumber": 987,
+                    "quantity": 4
+                }
+            ]
+        }
